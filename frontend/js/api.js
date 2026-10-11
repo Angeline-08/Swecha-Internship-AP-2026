@@ -6,7 +6,7 @@ const API_BASE = (
   (
     ['localhost', '127.0.0.1'].includes(window.location.hostname)
       ? 'http://localhost:8080/api'
-      : `${window.location.origin}/api`
+      : 'https://swecha-internship-ap-2026-production.up.railway.app/api'
   )
 ).replace(/\/+$/, '');
 
