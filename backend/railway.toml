@@ -1,0 +1,12 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+watchPatterns = ["src/**", "pom.xml"]
+
+[deploy]
+startCommand = "java -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -jar app.jar"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[environments.production.deploy]
+numReplicas = 1

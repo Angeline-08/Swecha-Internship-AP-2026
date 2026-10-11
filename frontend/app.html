@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse — Shop Smarter. Live Better.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <a href="#home" class="sidebar__logo">
+          <div class="sidebar__logo-icon">S</div>
+          <div class="sidebar__logo-text">ShopVerse</div>
+        </a>
+        <button class="sidebar__toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+          ☰
+        </button>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-label">Main</div>
+        <a href="#home" class="nav-item active" data-screen="home">
+          <span class="nav-item__icon">🏠</span>
+          <span class="nav-item__label">Home</span>
+        </a>
+        <a href="#categories" class="nav-item" data-screen="categories">
+          <span class="nav-item__icon">🏷️</span>
+          <span class="nav-item__label">Categories</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">Personal</div>
+        <a href="#wishlist" class="nav-item" data-screen="wishlist">
+          <span class="nav-item__icon">❤️</span>
+          <span class="nav-item__label">Wishlist</span>
+          <span class="nav-item__badge" id="wishlist-badge">0</span>
+        </a>
+        <a href="#cart" class="nav-item" data-screen="cart">
+          <span class="nav-item__icon">🛒</span>
+          <span class="nav-item__label">Cart</span>
+          <span class="nav-item__badge" id="cart-badge">0</span>
+        </a>
+        <a href="#orders" class="nav-item" data-screen="orders">
+          <span class="nav-item__icon">📦</span>
+          <span class="nav-item__label">Orders</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">User</div>
+        <a href="#account" class="nav-item" data-screen="account">
+          <span class="nav-item__icon">👤</span>
+          <span class="nav-item__label">Account</span>
+        </a>
+        <a href="#settings" class="nav-item" data-screen="settings">
+          <span class="nav-item__icon">⚙️</span>
+          <span class="nav-item__label">Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <button class="nav-item w-full" id="logoutBtn" style="background:none; border:none; text-align:left;">
+          <span class="nav-item__icon">🚪</span>
+          <span class="nav-item__label">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="topbar__hamburger" id="mobileMenuBtn">☰</button>
+        
+        <div class="search-bar topbar__search">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearch" placeholder="Search for products, brands and more...">
+        </div>
+        
+        <div class="topbar__actions">
+          <button class="topbar__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="topbar__notification-dot"></span>
+          </button>
+          
+          <button class="topbar__icon-btn" aria-label="Cart" id="topbarCartBtn">
+            🛒
+            <span class="topbar__cart-count" id="topbarCartCount">0</span>
+          </button>
+          
+          <div class="dropdown" id="userDropdown">
+            <div class="topbar__avatar" id="userAvatar">U</div>
+            <div class="dropdown__menu">
+              <a href="#account" class="dropdown__item">👤 Profile</a>
+              <a href="#settings" class="dropdown__item">⚙️ Settings</a>
+              <div class="dropdown__divider admin-only" style="display:none;"></div>
+              <a href="admin.html" class="dropdown__item admin-only" style="display:none;">🛡️ Admin Panel</a>
+              <div class="dropdown__divider"></div>
+              <button class="dropdown__item danger w-full" id="dropdownLogoutBtn" style="border:none;background:none;text-align:left;font-family:inherit;">🚪 Logout</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Screens Container -->
+      <div class="screen-container" id="screenContainer">
+        <div id="screen-onboarding" class="screen"><!-- rendered by onboarding.js --></div>
+        <div id="screen-home" class="screen active"><!-- rendered by home.js --></div>
+        <div id="screen-categories" class="screen"></div>
+        <div id="screen-search" class="screen"></div>
+        <div id="screen-product-detail" class="screen"></div>
+        <div id="screen-cart" class="screen"></div>
+        <div id="screen-wishlist" class="screen"></div>
+        <div id="screen-checkout" class="screen"></div>
+        <div id="screen-confirmation" class="screen"></div>
+        <div id="screen-orders" class="screen"></div>
+        <div id="screen-order-detail" class="screen"></div>
+        <div id="screen-account" class="screen"></div>
+        <div id="screen-settings" class="screen"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Global Modal Container -->
+  <div id="modalContainer"></div>
+
+  <!-- Global Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/payment.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

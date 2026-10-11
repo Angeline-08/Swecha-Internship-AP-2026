@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse — Shop Smarter. Live Better.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="auth-screen">
+    <div class="auth-card">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="auth-logo__icon">S</div>
+        <div class="auth-logo__name">ShopVerse</div>
+        <div class="auth-logo__tagline">Shop Smarter. Live Better.</div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Sign In</button>
+        <button class="auth-tab" data-tab="signup">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email</label>
+          <div class="input-group">
+            <span class="input-icon">✉</span>
+            <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-error" id="loginEmailError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+          <div class="form-error" id="loginPasswordError"></div>
+        </div>
+        <div style="text-align:right; margin-bottom:20px;">
+          <a href="#" id="forgotPasswordLink" style="font-size:0.8rem; color:var(--color-primary); text-decoration:none;">Forgot Password?</a>
+        </div>
+        <div class="form-error" id="loginError" style="margin-bottom:12px; text-align:center;"></div>
+        <button type="submit" class="btn btn-primary w-full" id="loginBtn">
+          <span class="btn-text">Sign In</span>
+        </button>
+      </form>
+
+      <!-- Signup Form (hidden initially) -->
+      <form id="signupForm" class="auth-form hidden">
+        <div class="form-group">
+          <label class="form-label" for="signupName">Full Name</label>
+          <div class="input-group">
+            <span class="input-icon">👤</span>
+            <input type="text" id="signupName" class="form-input" placeholder="John Doe" required autocomplete="name">
+          </div>
+          <div class="form-error" id="signupNameError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupEmail">Email</label>
+          <div class="input-group">
+            <span class="input-icon">✉</span>
+            <input type="email" id="signupEmail" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-error" id="signupEmailError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupPassword">Password</label>
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="signupPassword" class="form-input" placeholder="Min 8 characters" required>
+          </div>
+          <div class="form-error" id="signupPasswordError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupConfirm">Confirm Password</label>
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="signupConfirm" class="form-input" placeholder="••••••••" required>
+          </div>
+          <div class="form-error" id="signupConfirmError"></div>
+        </div>
+        <div class="form-error" id="signupError" style="margin-bottom:12px; text-align:center;"></div>
+        <button type="submit" class="btn btn-primary w-full" id="signupBtn">
+          <span class="btn-text">Create Account</span>
+        </button>
+      </form>
+
+      <!-- Forgot Password Form (hidden initially) -->
+      <form id="forgotForm" class="auth-form hidden">
+        <div style="margin-bottom:20px;">
+          <button type="button" id="backToLogin" style="background:none;border:none;color:var(--color-primary);cursor:pointer;font-size:0.875rem;display:flex;align-items:center;gap:6px;">← Back to Sign In</button>
+        </div>
+        <h3 style="margin-bottom:8px; margin-top:0;">Reset Password</h3>
+        <p style="color:var(--color-text-secondary);font-size:0.875rem;margin-bottom:20px;margin-top:0;">Enter your email and we'll send you a reset link.</p>
+        <div class="form-group">
+          <label class="form-label" for="forgotEmail">Email</label>
+          <input type="email" id="forgotEmail" class="form-input" placeholder="you@example.com" required>
+          <div class="form-error" id="forgotEmailError"></div>
+        </div>
+        <div class="form-error" id="forgotError" style="margin-bottom:12px;"></div>
+        <div id="forgotSuccess" style="color:var(--color-success);font-size:0.875rem;margin-bottom:12px;display:none;"></div>
+        <button type="submit" class="btn btn-primary w-full" id="forgotBtn">
+          <span class="btn-text">Send Reset Link</span>
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="divider-text" style="margin:24px 0;">or</div>
+
+      <!-- Google Sign-In -->
+      <button id="googleSignInBtn" class="btn btn-secondary w-full" style="display:flex;align-items:center;justify-content:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/></svg>
+        Continue with Google
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

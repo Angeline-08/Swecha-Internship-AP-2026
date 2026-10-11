@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="admin-shell" id="adminShell">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <a href="#dashboard" class="sidebar__logo">
+          <div class="sidebar__logo-icon" style="background:var(--color-error)">S</div>
+          <div class="sidebar__logo-text">Admin Panel</div>
+        </a>
+        <button class="sidebar__toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+          ☰
+        </button>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-label">Core</div>
+        <a href="#dashboard" class="nav-item active" data-screen="dashboard">
+          <span class="nav-item__icon">📊</span>
+          <span class="nav-item__label">Dashboard</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">Catalog</div>
+        <a href="#products" class="nav-item" data-screen="products">
+          <span class="nav-item__icon">📦</span>
+          <span class="nav-item__label">Products</span>
+        </a>
+        <a href="#categories" class="nav-item" data-screen="categories">
+          <span class="nav-item__icon">🏷️</span>
+          <span class="nav-item__label">Categories</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">Sales</div>
+        <a href="#orders" class="nav-item" data-screen="orders">
+          <span class="nav-item__icon">🛒</span>
+          <span class="nav-item__label">Orders</span>
+          <span class="nav-item__badge" id="pending-orders-badge" style="background:var(--color-warning);">3</span>
+        </a>
+        <a href="#payments" class="nav-item" data-screen="payments">
+          <span class="nav-item__icon">💳</span>
+          <span class="nav-item__label">Payments</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">Users</div>
+        <a href="#customers" class="nav-item" data-screen="customers">
+          <span class="nav-item__icon">👥</span>
+          <span class="nav-item__label">Customers</span>
+        </a>
+        
+        <div class="sidebar__nav-label mt-4">System</div>
+        <a href="#settings" class="nav-item" data-screen="settings">
+          <span class="nav-item__icon">⚙️</span>
+          <span class="nav-item__label">Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <button class="nav-item w-full" id="logoutBtn" style="background:none; border:none; text-align:left;">
+          <span class="nav-item__icon">🚪</span>
+          <span class="nav-item__label">Logout</span>
+        </button>
+        <a href="app.html" class="nav-item w-full mt-2" style="justify-content:center; color:var(--color-primary); background:rgba(20,184,166,0.1);">
+          Return to Store
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <button class="topbar__hamburger" id="mobileMenuBtn">☰</button>
+        
+        <div class="search-bar topbar__search">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="adminSearch" placeholder="Search orders, products, or customers...">
+        </div>
+        
+        <div class="topbar__actions">
+          <button class="topbar__icon-btn" aria-label="Notifications">
+            🔔
+            <span class="topbar__notification-dot"></span>
+          </button>
+          
+          <div class="dropdown" id="userDropdown">
+            <div class="topbar__avatar" id="userAvatar" style="background:var(--color-error);">A</div>
+            <div class="dropdown__menu">
+              <a href="#settings" class="dropdown__item">⚙️ Admin Settings</a>
+              <div class="dropdown__divider"></div>
+              <button class="dropdown__item danger w-full" id="dropdownLogoutBtn" style="border:none;background:none;text-align:left;font-family:inherit;">🚪 Logout</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Screens Container -->
+      <div class="admin-content" id="screenContainer">
+        <div id="admin-screen-dashboard" class="screen active"></div>
+        <div id="admin-screen-products" class="screen"></div>
+        <div id="admin-screen-categories" class="screen"></div>
+        <div id="admin-screen-orders" class="screen"></div>
+        <div id="admin-screen-order-detail" class="screen"></div>
+        <div id="admin-screen-customers" class="screen"></div>
+        <div id="admin-screen-payments" class="screen"></div>
+        <div id="admin-screen-settings" class="screen"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Global Modal Container -->
+  <div id="modalContainer"></div>
+
+  <!-- Global Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
